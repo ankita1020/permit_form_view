@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {UserPermitServiceService, County, PermitType, FormData} from '../user-permit-service.service';
+import {UserPermitServiceService, County, PermitType} from '../user-permit-service.service';
 
 @Component({
   selector: 'app-user-permit-form',
@@ -17,16 +17,18 @@ export class UserPermitFormComponent implements OnInit{
     constructor(private fb: FormBuilder, private userPermitService: UserPermitServiceService)
     {
       this.userPermitForm = this.fb.group({
-              username: ['', [Validators.required]],
-              addressLine1: ['', [Validators.required]],
-              addressLine2: [''],
-              city: ['', [Validators.required]],
-              state: ['', [Validators.required]],
-              zipcode: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
-              country: ['', [Validators.required]],
-              countyId: ['', [Validators.required]],
-              permitTypeId: ['', [Validators.required]],
-            });
+        username: ['', [Validators.required]],
+        address: this.fb.group({
+          addressLine1: ['', [Validators.required]],
+          addressLine2: [''],
+          city: ['', [Validators.required]],
+          state: ['', [Validators.required]],
+          zipcode: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+          country: ['', [Validators.required]]
+        }),
+        countyId: ['', [Validators.required]],
+        permitTypeId: ['', [Validators.required]]
+      });
     }
 
     ngOnInit(): void {
@@ -60,12 +62,12 @@ export class UserPermitFormComponent implements OnInit{
     onSubmit(): void {
       if (this.userPermitForm.valid) {
         console.log(this.userPermitForm.value);
-        const formData: FormData = this.userPermitForm.value;
-        this.userPermitService.submitForm(formData).subscribe(response => {
+        const requestData = this.userPermitForm.value;
+        this.userPermitService.submitForm(requestData).subscribe(response => {
               console.log('Form submitted successfully:', response);
 
               alert('Form submitted successfully!');
-              console.log(formData.countyId + formData.permitTypeId);
+              console.log(requestData.countyId + requestData.permitTypeId);
             }, error => {
               console.error('Error during form submission:', error);
               alert('Failed to submit form. Please try again.');

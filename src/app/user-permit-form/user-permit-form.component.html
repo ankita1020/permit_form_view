@@ -8,47 +8,46 @@
       Username is required.
     </div>
 
-    <!-- Address Line 1 -->
-    <label for="addressLine1">Address Line 1</label>
-    <input id="addressLine1" formControlName="addressLine1" type="text" />
-    <div *ngIf="userPermitForm.get('addressLine1')?.invalid && userPermitForm.get('addressLine1')?.touched" class="error">
-      Address Line 1 is required.
-    </div>
+    <fieldset formGroupName="address">
+      <!-- Address Line 1 -->
+      <label for="addressLine1">Address Line 1</label>
+      <input id="addressLine1" formControlName="addressLine1" type="text" />
+      <div *ngIf="userPermitForm.get('address.addressLine1')?.invalid && userPermitForm.get('address.addressLine1')?.touched" class="error">
+        Address Line 1 is required.
+      </div>
 
-    <!-- Address Line 2 -->
-    <label for="addressLine2">Address Line 2</label>
-    <input id="addressLine2" formControlName="addressLine2" type="text" />
-    <!--<div *ngIf="userPermitForm.get('addressLine2')?.invalid && userPermitForm.get('addressLine2')?.touched" class="error">
-      Address Line 2 is required.
-    </div>-->
+      <!-- Address Line 2 -->
+      <label for="addressLine2">Address Line 2</label>
+      <input id="addressLine2" formControlName="addressLine2" type="text" />
 
-    <!-- City -->
-    <label for="city">City</label>
-    <input id="city" formControlName="city" type="text" />
-    <div *ngIf="userPermitForm.get('city')?.invalid && userPermitForm.get('city')?.touched" class="error">
-      City is required.
-    </div>
+      <!-- City -->
+      <label for="city">City</label>
+      <input id="city" formControlName="city" type="text" />
+      <div *ngIf="userPermitForm.get('address.city')?.invalid && userPermitForm.get('address.city')?.touched" class="error">
+        City is required.
+      </div>
 
-    <!-- State -->
-    <label for="state">State</label>
-    <input id="state" formControlName="state" type="text" />
-    <div *ngIf="userPermitForm.get('state')?.invalid && userPermitForm.get('state')?.touched" class="error">
-      State is required.
-    </div>
+      <!-- State -->
+      <label for="state">State</label>
+      <input id="state" formControlName="state" type="text" />
+      <div *ngIf="userPermitForm.get('address.state')?.invalid && userPermitForm.get('address.state')?.touched" class="error">
+        State is required.
+      </div>
 
-    <!-- Zipcode -->
-    <label for="zipcode">Zipcode</label>
-    <input id="zipcode" formControlName="zipcode" type="text" />
-    <div *ngIf="userPermitForm.get('zipcode')?.invalid && userPermitForm.get('zipcode')?.touched" class="error">
-      Zipcode is required and must be 5 digits.
-    </div>
+      <!-- Zipcode -->
+      <label for="zipcode">Zipcode</label>
+      <input id="zipcode" formControlName="zipcode" type="text" />
+      <div *ngIf="userPermitForm.get('address.zipcode')?.invalid && userPermitForm.get('address.zipcode')?.touched" class="error">
+        Zipcode is required and must be 5 digits.
+      </div>
 
-    <!-- Country -->
-    <label for="country">Country</label>
-    <input id="country" formControlName="country" type="text" />
-    <div *ngIf="userPermitForm.get('country')?.invalid && userPermitForm.get('country')?.touched" class="error">
-      Country is required.
-    </div>
+      <!-- Country -->
+      <label for="country">Country</label>
+      <input id="country" formControlName="country" type="text" />
+      <div *ngIf="userPermitForm.get('address.country')?.invalid && userPermitForm.get('address.country')?.touched" class="error">
+        Country is required.
+      </div>
+    </fieldset>
 
     <!-- County -->
     <label for="county">County</label>
@@ -72,7 +71,5 @@
 
     <!-- Submit Button -->
     <button type="submit" [disabled]="userPermitForm.invalid">Submit</button>
-    <br>
-    <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
   </form>
 </div>

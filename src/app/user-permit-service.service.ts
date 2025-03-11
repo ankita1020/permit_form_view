@@ -12,18 +12,6 @@ export interface PermitType {
   permitTypeName: string;
 }
 
-export interface FormData {
-  username: string;
-  addressLine1: string;
-  addressLine2: string;
-  city: string;
-  state: string;
-  zipcode: string;
-  country: string;
-  countyId: number;
-  permitTypeId: number;
-}
-
 @Injectable({
   providedIn: 'root'
 })
