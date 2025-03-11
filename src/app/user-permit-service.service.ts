@@ -29,10 +29,7 @@ export interface FormData {
 })
 export class UserPermitServiceService {
 
-  private apiUrl = 'http://localhost:5174/api/permit'; // Replace with your backend URL
-  /* private countiesApiUrl = 'https://example.com/api/counties'; // Replace with your backend API URL
-  private permitTypesApiUrl = 'https://example.com/api/permit-types'; // Replace with your backend API URL */
-
+  private apiUrl = 'http://localhost:5174/api/permit';
 
     constructor(private http: HttpClient) {}
 
